@@ -5,6 +5,9 @@ function numberWithCommas(x) {
 }
 
 function jsonRequest(year) {
+    $('#current_year').html(year)
+    $('#loading').show();
+    $('#charts').hide();
     $.getJSON('/accidents/' + year, function(data) {
         $('#loading').hide();
         $('#charts').show();
