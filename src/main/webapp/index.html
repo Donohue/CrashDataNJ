@@ -24,15 +24,18 @@
             <!--<span class="lift:helloWorld.howdy">
 	            Welcome to your Lift app at <span id="time">Time goes here</span>
 	        </span>-->
-            <hr/>
-            <div id="chart" class="row"></div>
-            <hr/>
-            <div id="driver_types" class="span5"></div>
-            <div id="driver_sex" class="span5 offset1"></div>
-            <div style="clear:both"></div>
-            <hr/>
-            <div id="driver_age" class="row"></div>
-            <hr/>
+            <center><img id="loading" style="margin-top:100px;" src="/images/ajax-loader.gif"/></center>
+            <div id="charts" style="display:none;">
+                <hr/>
+                <div id="chart" class="row"></div>
+                <hr/>
+                <div id="driver_types" class="span5"></div>
+                <div id="driver_sex" class="span5 offset1"></div>
+                <div style="clear:both"></div>
+                <hr/>
+                <div id="driver_age" class="row"></div>
+                <hr/>
+            </div>
         </div>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="js/bootstrap.min.js"></script>

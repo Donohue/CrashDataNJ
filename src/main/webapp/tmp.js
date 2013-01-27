@@ -5,6 +5,8 @@ function numberWithCommas(x) {
 }
 $(document).ready(function() {
     $.getJSON('/accidents/2012', function(data) {
+        $('#loading').hide();
+        $('#charts').show();
         title = numberWithCommas(data['total_accidents']) +  ' Accidents'
         chart1 = new Highcharts.Chart({
             chart: {
