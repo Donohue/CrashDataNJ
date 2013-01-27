@@ -5,6 +5,7 @@ import http._
 import rest._
 import json._
 import JsonDSL._
+import net.liftweb.mongodb.JObjectParser
 
 object RestApi extends RestHelper {
     var db = new DB
@@ -23,6 +24,7 @@ object RestApi extends RestHelper {
             var _38to47 = db.driverCollection.driverAgeIntervalInYear(38, 47, year.toInt)
             var _48to57 = db.driverCollection.driverAgeIntervalInYear(47, 57, year.toInt)
             var _58andup = db.driverCollection.driverAgeIntervalInYear(58, 300, year.toInt)
+            var gsp_markers = db.gspCollection.mileMarkersForYear(year.toInt)
             JsonResponse(JObject(List(JField("daily_accidents",JArray(accidents)),
                                       JField("total_accidents",JInt(total)),
                                       JField("fatal_accidents",JInt(killed)),
@@ -35,7 +37,8 @@ object RestApi extends RestHelper {
                                       JField("28to37", JInt(_28to37)),
                                       JField("38to47", JInt(_38to47)),
                                       JField("48to57", JInt(_48to57)),
-                                      JField("58andup", JInt(_58andup)))))
+                                      JField("58andup", JInt(_58andup)),
+                                      JField("gsp_markers", JObjectParser.serialize(gsp_markers)))))
         }
     }
 }

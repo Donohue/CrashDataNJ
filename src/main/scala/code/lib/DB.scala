@@ -21,4 +21,8 @@ class DB {
     def driverCollection: DriverCollection = {
         new DriverCollection(mongoDb)
     }
+
+    def gspCollection: GspCollection = {
+        new GspCollection(mongoDb)
+    }
 }
