@@ -11,7 +11,7 @@ object RestApi extends RestHelper {
 
     serve {
         case "accidents" :: year :: _ JsonGet _ => {
-            var accidents = db.accidentCollection.accidentsByDayForYear(year.toInt)
+            var accidents = db.dailyAccidentCollection.dailyAccidentsForYear(year.toInt)
             var total = db.accidentCollection.numAccidentsInYear(year.toInt)
             var killed = db.accidentCollection.numFatalitiesInYear(year.toInt)
             var injured = db.accidentCollection.numInjuriesInYear(year.toInt)

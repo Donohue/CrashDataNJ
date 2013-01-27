@@ -14,6 +14,10 @@ class DB {
         new AccidentCollection(mongoDb)
     }
 
+    def dailyAccidentCollection: DailyAccidentCollection = {
+        new DailyAccidentCollection(mongoDb)
+    }
+
     def driverCollection: DriverCollection = {
         new DriverCollection(mongoDb)
     }

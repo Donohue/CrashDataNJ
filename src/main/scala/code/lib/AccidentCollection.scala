@@ -25,11 +25,8 @@ class AccidentCollection(mongoDb: MongoDB) {
     }
 
     def numAccidentsInYear(year: Int): Int = {
-        var i = 0
-        accidents.find(MongoDBObject("year" -> year)).foreach(accident => {
-            i += 1
-        })
-        i
+        var num = accidents.count(MongoDBObject("year" -> year))
+        num.asInstanceOf[Int]
     }
 
     def numFatalitiesInYear(year: Int): Int = {
