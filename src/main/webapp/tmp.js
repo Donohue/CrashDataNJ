@@ -3,8 +3,9 @@ var chart2;
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-$(document).ready(function() {
-    $.getJSON('/accidents/2012', function(data) {
+
+function jsonRequest(year) {
+    $.getJSON('/accidents/' + year, function(data) {
         $('#loading').hide();
         $('#charts').show();
         title = numberWithCommas(data['total_accidents']) +  ' Accidents'
@@ -27,7 +28,7 @@ $(document).ready(function() {
             },
             series: [{
                 pointInterval:24*3600*1000,
-                pointStart:Date.UTC(2012,0,01),
+                pointStart:Date.UTC(year,0,01),
                 name: 'Accidents Per Day',
                 data: data['daily_accidents']
             }]
@@ -147,4 +148,8 @@ $(document).ready(function() {
             }]
         });
     });
+}
+
+$(document).ready(function() {
+    jsonRequest(2012)
 });
